@@ -12,7 +12,7 @@ try {
     };
     (async () => {
         await exec.exec('git', ['describe', '--abbrev=0'], options);
-        const version = result.replace(/^v(ersion-?)?/i, "").replace(/snapshot$/i, "Preview");
+        const version = result.trim().replace(/^v(ersion-?)?/i, "").replace(/snapshot$/i, "Preview");
         core.exportVariable(varName, version);
     })().catch(e => {
         core.setFailed(e.message);
