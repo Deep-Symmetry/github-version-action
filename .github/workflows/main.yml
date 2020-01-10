@@ -9,4 +9,4 @@ jobs:
     - uses: actions/checkout@v1
     - uses: Deep-Symmetry/github-version-action@master
     - name: Show our version
-      run: echo Inferred version: ${{ env.git_version }}
+      run: echo "Inferred version: ${{ env.git_version }}"
