@@ -50,7 +50,7 @@ const core = __webpack_require__(310);
 
 try {
     const varName = core.getInput('var-name');
-    exportVariable(varName, 'TBD!');
+    core.exportVariable(varName, 'TBD!');
 } catch (error) {
     core.setFailed(error.message);
 }
