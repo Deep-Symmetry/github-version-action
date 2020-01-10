@@ -1,0 +1,12 @@
+name: Test
+
+on: [push]
+
+jobs:
+  check_own_version:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: Deep-Symmetry/github-version-action@master
+    - name: Show our version
+      run: echo Inferred version: $git_version
