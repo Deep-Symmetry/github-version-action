@@ -59,7 +59,7 @@ try {
         }
     };
     (async () => {
-        await exec.exec('git describe --abbrev-0');
+        await exec.exec('git describe --abbrev=0');
         core.exportVariable(varName, result);
     })().catch(e => {
         core.setFailed(e.message);
