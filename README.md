@@ -9,8 +9,8 @@ etc. The name of the environment variable which gets set defaults to
 
 For example, if the closest tag is `v0.2.3-SNAPSHOT` or
 `0.2.3-SNAPSHOT`, the environment variable will be set to
-`"0.2.3-Preview"`. If the closest tag is `v1.0.3` or `1.0.3`, the
-environment variable will be set to `1.0.3`.
+`"0.2.3-Preview"`. If the closest tag is `Version-1.0.3` or `1.0.3`,
+the environment variable will be set to `1.0.3`.
 
 The environment variable set by this action will be available to
 subsequent steps in the same job in your workflow.
