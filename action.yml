@@ -1,0 +1,10 @@
+name: 'GitHub Version Action'
+description: 'GitHub Action setting an env variable to help create files based on Maven version inferred from git tags.'
+inputs:
+  var-name:  # id of input
+    description: 'Variable to create, defaults to git_version'
+    required: false
+    default: 'git_version'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
