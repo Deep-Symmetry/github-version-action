@@ -28,6 +28,8 @@ itself.
 
 ## Example usage
 
+```yaml
 uses: Deep-Symmetry/github-version-action@v1
 with:
   var-name: 'project_version'
+```
