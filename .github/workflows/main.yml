@@ -6,7 +6,7 @@ jobs:
   check_own_version:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
 
     - name: Test without tag-var-name
       uses: Deep-Symmetry/github-version-action@master
