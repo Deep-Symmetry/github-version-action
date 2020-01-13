@@ -16,10 +16,12 @@ try {
         }
     };
     (async () => {
-        await exec.exec('git', ['for-each-ref', '--sort=taggerdate', '--format', "'%(tag)'", 'refs/tags'], options);
+        await exec.exec('git', ['tag', '--sort=taggerdate', '--merged'], options);
         console.log("result:", result);
         const lines = result.split("\n");
+        console.log("lines:", lines);
         const rawVersion = lines.find(isVersion);
+        console.log("rawVersion:", lines);
         const version = rawVersion.replace(/^v(ersion)?-?/i, "").replace(/snapshot$/i, "Preview");
         console.log(`rawVersion=${rawVersion}, version=${version}`);
         core.exportVariable(varName, version);
