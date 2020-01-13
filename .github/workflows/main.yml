@@ -10,7 +10,6 @@ jobs:
 
     - name: Fetch all the tags and history.
       run: |
-        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
         git fetch --prune --unshallow
 
     - name: Try git command directly.
