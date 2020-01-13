@@ -64,7 +64,7 @@ try {
         }
     };
     (async () => {
-        await exec.exec('git', ['tag', '--sort=taggerdate', '--merged'], options);
+        await exec.exec('git', ['tag', '--sort=-taggerdate', '--merged'], options);
         console.log("result:", result);
         const lines = result.split("\n");
         console.log("lines:", lines);
