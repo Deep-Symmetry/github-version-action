@@ -10,10 +10,8 @@ jobs:
 
     - name: Fetch all the tags and history.
       run: |
+        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
         git fetch --prune --unshallow
-
-    - name: Try git command directly.
-      run: "git tag --sort=-taggerdate --merged"
 
     - name: Test without tag-var-name
       uses: Deep-Symmetry/github-version-action@master
@@ -30,6 +28,14 @@ jobs:
         tag-var-name: version_tag
 
     - name: Show multi-variable version
+      run: |
+        echo Inferred version $second_run
+        echo Raw git tag: $version_tag
+
+  check_from_new-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Show variables from previous job
       run: |
         echo Inferred version $second_run
         echo Raw git tag: $version_tag
