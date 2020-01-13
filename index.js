@@ -16,7 +16,7 @@ try {
     };
     (async () => {
         // Fetch all the tags
-        await exec.exec('git', ['fetch', '--depth=1', 'origin', 'origin +refs/tags/*:refs/tags/*']);
+        await exec.exec('git', ['fetch', '--depth=1', 'origin', '+refs/tags/*:refs/tags/*']);
 
         // Fetch all the history
         await exec.exec('git', ['fetch', '--prune', '--unshallow']);
