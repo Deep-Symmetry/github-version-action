@@ -8,6 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
+    - name: Fetch all the tags.
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
     - name: Try git command directly.
       run: "git for-each-ref --sort=taggerdate --format '%(tag)' refs/tags"
 
