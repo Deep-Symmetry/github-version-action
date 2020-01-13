@@ -7,6 +7,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: Deep-Symmetry/github-version-action@master
-    - name: Show our version
-      run: echo Inferred version $git_version
+
+    - name: Test without tag-var-name
+      uses: Deep-Symmetry/github-version-action@master
+      with:
+        tag-var-name: version_tag
+
+    - name: Show simple version
+      run: |
+        echo Inferred version $git_version
+        echo Should be no exported tag: $version_tag
+
+    - name: Test with tag-var-name
+      uses: Deep-Symmetry/github-version-action@master
+      with:
+        var-name: second_run
+        tag-var-name: version_tag
+
+    - name: Show multi-variable version
+      run: |
+        echo Inferred version $second_run
+        echo Raw git tag: $version_tag

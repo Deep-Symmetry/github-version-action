@@ -6,6 +6,9 @@ inputs:
     description: 'Variable to create, defaults to git_version'
     required: false
     default: 'git_version'
+  tag-var-name:
+    description: 'Optional variable to create for raw git tag name'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
