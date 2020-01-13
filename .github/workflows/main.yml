@@ -10,8 +10,6 @@ jobs:
 
     - name: Test without tag-var-name
       uses: Deep-Symmetry/github-version-action@master
-      with:
-        tag-var-name: version_tag
 
     - name: Show simple version
       run: |

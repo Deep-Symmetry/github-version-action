@@ -65,6 +65,7 @@ try {
     };
     (async () => {
         await exec.exec('git', ['for-each-ref', '--sort=taggerdate', '--format', "'%(tag)'", 'refs/tags'], options);
+        console.log("result:", result);
         const lines = result.split("\n");
         const rawVersion = lines.find(isVersion);
         const version = rawVersion.replace(/^v(ersion)?-?/i, "").replace(/snapshot$/i, "Preview");
