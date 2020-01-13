@@ -8,11 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Fetch all the tags and history.
-      run: |
-        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-        git fetch --prune --unshallow
-
     - name: Test without tag-var-name
       uses: Deep-Symmetry/github-version-action@master
 

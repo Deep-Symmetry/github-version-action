@@ -15,6 +15,13 @@ try {
         }
     };
     (async () => {
+        // Fetch all the tags
+        await exec.exec('git', ['fetch', '--depth=1', 'origin', 'origin +refs/tags/*:refs/tags/*']);
+
+        // Fetch all the history
+        await exec.exec('git', ['fetch', '--prune', '--unshallow']);
+
+        // Now list all the tags on the current branch in reverse chronological order, collecting the output.
         await exec.exec('git', ['tag', '--sort=-taggerdate', '--merged'], options);
         const lines = result.split("\n");
         const rawVersion = lines.find(isVersion);
