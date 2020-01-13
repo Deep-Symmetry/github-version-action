@@ -18,9 +18,11 @@ try {
         await exec.exec('git', ['for-each-ref', '--sort=taggerdate', '--format', "'%(tag)'", 'refs/tags'], options);
         const lines = result.split("\n");
         const rawVersion = lines.find(isVersion);
-        const version = result.trim().replace(/^v(ersion)?-?/i, "").replace(/snapshot$/i, "Preview");
+        const version = rawVersion.replace(/^v(ersion)?-?/i, "").replace(/snapshot$/i, "Preview");
         core.exportVariable(varName, version);
-        tagVarName && core.exportVariable(tagVarName, rawVersion);
+        if (!!tagVarName) {
+            core.exportVariable(tagVarName, rawVersion);
+        }
     })().catch(e => {
         core.setFailed(e.message);
     });
