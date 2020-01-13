@@ -7,6 +7,7 @@ const isVersion = (tag) => /^(v(ersion)?)?-?\d+(\.\d+)*(-snapshot)?/i.test(tag);
 try {
     const varName = core.getInput('var-name', { required: true });
     const tagVarName = core.getInput('tag-var-name');
+    console.log(`varName=${varName}, tagVarName=${tagVarName}`);
     let result = '';
     const options = {};
     options.listeners = {
@@ -19,6 +20,7 @@ try {
         const lines = result.split("\n");
         const rawVersion = lines.find(isVersion);
         const version = rawVersion.replace(/^v(ersion)?-?/i, "").replace(/snapshot$/i, "Preview");
+        console.log(`rawVersion=${rawVersion}, version=${version}`);
         core.exportVariable(varName, version);
         if (!!tagVarName) {
             core.exportVariable(tagVarName, rawVersion);
