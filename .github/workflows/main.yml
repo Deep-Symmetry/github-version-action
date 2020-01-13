@@ -8,8 +8,10 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Fetch all the tags.
-      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+    - name: Fetch all the tags and history.
+      run: |
+        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        git fetch --prune --unshallow
 
     - name: Try git command directly.
       run: "git tag --sort=-taggerdate --merged"
