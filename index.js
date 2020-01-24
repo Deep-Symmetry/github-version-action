@@ -7,6 +7,7 @@ const isVersion = (tag) => /^(v(ersion)?)?-?\d+(\.\d+)*(-snapshot)?/i.test(tag);
 try {
     const varName = core.getInput('var-name', { required: true });
     const tagVarName = core.getInput('tag-var-name');
+    const mvnVarName = core.getInput('mvn-var-name');
     let result = '';
     const options = {};
     options.listeners = {
@@ -25,10 +26,14 @@ try {
         await exec.exec('git', ['tag', '--sort=-taggerdate', '--merged'], options);
         const lines = result.split("\n");
         const rawVersion = lines.find(isVersion);
-        const version = rawVersion.replace(/^v(ersion)?-?/i, "").replace(/snapshot$/i, "Preview");
+        const mvnVersion = rawVersion.replace(/^v(ersion)?-?/i, "");
+        const version = mvnVersion.replace(/snapshot$/i, "Preview");
         core.exportVariable(varName, version);
         if (!!tagVarName) {
             core.exportVariable(tagVarName, rawVersion);
+        }
+        if (!!mvnVarName) {
+            core.exportVariable(mvnVarName, mvnVersion);
         }
     })().catch(e => {
         core.setFailed(e.message);

@@ -9,6 +9,9 @@ inputs:
   tag-var-name:
     description: 'Optional variable to create for raw git tag name'
     required: false
+  mvn-var-name:
+    description: 'Optional variable to create for maven version'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'

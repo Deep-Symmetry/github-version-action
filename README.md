@@ -14,8 +14,13 @@ For example, if the closest matching tag is `v0.2.3-SNAPSHOT` or
 the environment variable will be set to `1.0.3`.
 
 Optionally you can also pass an input `tag-var-name`, which will cause
-a second environment variable with that name to be set to the raw git
+another environment variable with that name to be set to the raw git
 tag name that was matched as the most recent version tag.
+
+Optionally you can also pass an input `mvn-var-name`, which will cause
+another environment variable with that name to be set to the maven
+version implied by the most recent version tag (which simply removes
+any leading "v" or "version" from the tag).
 
 The environment variable(s) set by this action will be available to
 subsequent steps in the same job in your workflow.
