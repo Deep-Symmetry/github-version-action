@@ -6,10 +6,10 @@ jobs:
   check_own_version:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     - name: Test without tag-var-name
-      uses: Deep-Symmetry/github-version-action@master
+      uses: Deep-Symmetry/github-version-action@main
 
     - name: Show simple version
       run: |
@@ -17,7 +17,7 @@ jobs:
         echo Should be no exported tag: $version_tag
 
     - name: Test with tag-var-name
-      uses: Deep-Symmetry/github-version-action@master
+      uses: Deep-Symmetry/github-version-action@main
       with:
         var-name: second_run
         tag-var-name: version_tag
